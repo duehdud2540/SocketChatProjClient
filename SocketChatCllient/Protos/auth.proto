@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "SocketChatServer.Protos";
+package auth;
+
+service AuthService {
+      // 로그인 RPC 메서드
+      rpc Login (LoginRequest) returns (LoginResponse);
+    }
+
+    // 클라이언트가 보낼 요청 데이터
+    message LoginRequest {
+      string userId = 1;      // 사용자 ID
+      string password = 2;    // 비밀번호
+    }
+
+    // 서버가 돌려줄 응답 데이터
+    message LoginResponse {
+      bool isSuccess = 1;     // 성공 여부
+      string message = 2;     // 안내/에러 메시지
+      string token = 3;       // 인증 성공 시 발급할 토큰/세션키
+      string nickname = 4;    // 로그인한 유저 닉네임 (선택)
+    }
+

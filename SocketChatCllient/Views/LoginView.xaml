@@ -25,27 +25,65 @@
                            HorizontalAlignment="Center" 
                            Margin="0,0,0,25"/>
 
+                <TextBlock Text="{Binding ErrorMessage}"
+               Foreground="#DC3545"
+               FontSize="12"
+               HorizontalAlignment="Center"
+               Margin="0,0,0,10"
+               TextWrapping="Wrap"/>
                 <TextBlock Text="아이디" Foreground="#495057" Margin="0,0,0,5"/>
-                <TextBox Height="36" Margin="0,0,0,15" VerticalContentAlignment="Center" Padding="5,0"/>
+                <TextBox Height="36" Margin="0,0,0,15" VerticalContentAlignment="Center" Padding="5,0"
+                    Text="{Binding UserId, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <TextBlock Text="비밀번호" Foreground="#495057" Margin="0,0,0,5"/>
-                <PasswordBox Height="36" Margin="0,0,0,25" VerticalContentAlignment="Center" Padding="5,0"/>
-
-                <Grid Height="20" Margin="0,0,0,10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock Foreground="#495057" Text="회원가입하셨나요" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-                </Grid>
+                <PasswordBox x:Name="PwBox" Height="36" Margin="0,0,0,25" VerticalContentAlignment="Center" Padding="5,0"/>
+                <TextBlock HorizontalAlignment="Center" Margin="0,0,0,15">
+                <Run Text="계정이 없으신가요? " Foreground="#6C757D"/>
+                <!-- 하이퍼링크 요소 -->
+    <Hyperlink Command="{Binding NavigateToRegisterCommand}"
+               Foreground="#0D6EFD"
+               TextDecorations="None">
+        <!-- 마우스 호버(Hover) 시 밑줄 스타일 -->
+        <Hyperlink.Style>
+            <Style TargetType="Hyperlink">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="TextDecorations" Value="Underline"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Hyperlink.Style>
+        회원가입
+    </Hyperlink>
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Center" Margin="0,0,0,15">
+                <Run Text="계정을 잊으셨나요? " Foreground="#6C757D"/>
+                <!-- 하이퍼링크 요소 -->
+    <Hyperlink Command="{Binding NavigateToRegisterCommand}"
+               Foreground="#0D6EFD"
+               TextDecorations="None">
+        <!-- 마우스 호버(Hover) 시 밑줄 스타일 -->
+        <Hyperlink.Style>
+            <Style TargetType="Hyperlink">
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="TextDecorations" Value="Underline"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Hyperlink.Style>
+        아이디/비밀번호찾기
+    </Hyperlink>
+                </TextBlock>
 
                 <Button Content="로그인" 
                         Height="40" 
                         Background="#0D6EFD" 
                         Foreground="White" 
                         FontWeight="Bold" 
-                        Cursor="Hand"/>
+                        Cursor="Hand"
+                        Command="{Binding LoginCommand}"
+                        CommandParameter="{Binding ElementName=PwBox}"/>
             </StackPanel>
         </Border>
     </Grid>

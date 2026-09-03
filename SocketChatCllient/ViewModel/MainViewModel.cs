@@ -20,7 +20,7 @@ namespace SocketChatClient.ViewModel
         public MainViewModel()
         {
             // 앱 실행 시 첫 화면을 로그인 화면으로 세팅
-            CurrentViewModel = new LoginViewModel();
+            CurrentViewModel = new LoginViewModel(vm => CurrentViewModel = vm);
         }
     }
 }

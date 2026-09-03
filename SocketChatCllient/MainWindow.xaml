@@ -8,11 +8,18 @@
         xmlns:local="clr-namespace:SocketChatClient"
         mc:Ignorable="d"
         Title="SocketChatProj" Height="650" Width="1000"
-        WindowStartupLocation="CenterScreen"
-        Background="#1E1F22">
+        WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/SocketChatClientBackGround.png" 
+                    Stretch="UniformToFill"/>
+    </Window.Background>
+
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:LoginViewModel}">
             <v:LoginView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ChatViewModel}">
+            <v:ChatView />
         </DataTemplate>
     </Window.Resources>
 
